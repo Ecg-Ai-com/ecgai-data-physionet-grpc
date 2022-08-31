@@ -1,0 +1,77 @@
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.0.1
+    hooks:
+      - id: check-toml
+      - id: check-yaml
+      - id: end-of-file-fixer
+      - id: mixed-line-ending
+
+  - repo: https://github.com/PyCQA/isort
+    rev: 5.10.1
+    hooks:
+    - id: isort
+
+#  - repo: https://github.com/pre-commit/pre-commit-hooks
+#    rev: v4.1.0
+#    hooks:
+#      - id: debug-statements
+  - repo: https://github.com/psf/black
+    rev: 22.6.0
+    hooks:
+      - id: black
+
+  - repo: https://github.com/PyCQA/flake8
+    rev: 5.0.4
+    hooks:
+    - id: flake8
+      additional_dependencies: [flake8-bugbear==21.9.2]
+
+#  - repo: https://github.com/asottile/pyupgrade
+#    rev: v2.37.3
+#    hooks:
+#    - id: pyupgrade
+#      args: [--py36-plus]
+
+#  - repo: https://github.com/mgedmin/check-python-versions
+#    rev: 0.19.1
+#    hooks:
+#    - id: check-python-versions
+
+#  - repo: https://github.com/mgedmin/check-manifest
+#    rev: '0.47'
+#    hooks:
+#    - id: check-manifest
+#      args: [--no-build-isolation]
+
+  - repo: https://github.com/PyCQA/bandit
+    rev: 1.7.4
+    hooks:
+    - id: bandit
+      args:
+      - --skip
+      - B101
+
+
+#        args: ["--check"]
+
+#  - repo: https://github.com/PyCQA/isort
+#    rev: 5.10.1
+#    hooks:
+#      - id: isort
+#        args: ["--check", "--profile", "black"]
+#
+#  - repo: https://github.com/PyCQA/flake8
+#    rev: 4.0.1
+#    hooks:
+#    - id: flake8
+#      additional_dependencies: [mccabe]
+#      args: ["--max-line-length", "88", "--max-complexity", "10"]
+
+#  - repo: https://github.com/PyCQA/pylint/
+#    rev: v2.14.5
+#    hooks:
+#    - id: pylint
+#      exclude: tests/  # Prevent files in tests/ to be passed in to pylint.

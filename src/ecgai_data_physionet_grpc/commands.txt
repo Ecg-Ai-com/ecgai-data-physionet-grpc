@@ -1,0 +1,3 @@
+cd src
+cd ecgai_data_physionet_grpc
+poetry run python -m grpc_tools.protoc -I . --python_betterproto_out=. protos/get_by_id.proto
