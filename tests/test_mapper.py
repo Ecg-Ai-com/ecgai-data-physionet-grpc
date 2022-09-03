@@ -15,6 +15,8 @@ def test_to_ecg_plot_request(record_path_name):
     record = setup_test_record_data(path_name=record_path_name)
     sut = to_get_by_id_response(record= record,transaction_id=transaction_id)
     assert type(sut) is GetByIdResponse
+    assert sut.transaction_id == transaction_id
+    assert sut.ecg.record_id == record.record_id
 #     ecg_request = DrawEcgPlotRequest()
 #     ecg = Ecg()
 #     file_path = pathlib.Path(ROOT_DIR, record_path_name)

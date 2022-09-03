@@ -1,6 +1,8 @@
 import asyncio
 
+from ecgai_data_physionet.exceptions import FileNotDownloadedError, InValidRecordError, InValidSampleRateError
 from ecgai_data_physionet.ptbxl import PtbXl
+from grpclib import GRPCError, Status
 from grpclib.health.service import Health
 from grpclib.server import Server
 
@@ -13,13 +15,13 @@ class EcgDrawingServer(GetByIdServiceBase):
     host: str
     port: int
 
-    def __init__(self, host: str = "localhost", port: int = 50055):
+    def __init__(self, host: str = "localhost", port: int = 45210):
         self._server = Server([self, Health()])
         self.host = host
         self.port = port
 
     async def run(
-        self,
+            self,
     ):
         await self._server.start(host=self.host, port=self.port)
         print("")
@@ -33,9 +35,12 @@ class EcgDrawingServer(GetByIdServiceBase):
 
     async def get_by_id(self, get_by_id_request: GetByIdRequest) -> GetByIdResponse:
         sut = PtbXl()
-        # Act
-        record = await sut.get_record(record_id=get_by_id_request.record_id, sample_rate=get_by_id_request.sample_rate)
-        return to_get_by_id_response(record)
+        try:
+            record = await sut.get_record(record_id=get_by_id_request.record_id,
+                                          sample_rate=get_by_id_request.sample_rate)
+            return to_get_by_id_response(record=record, transaction_id=get_by_id_request.transaction_id)
+        except (FileNotDownloadedError, InValidRecordError, InValidSampleRateError) as e:
+            raise GRPCError(status=Status.INVALID_ARGUMENT, message=str(e))
 
 
 async def main():

@@ -5,6 +5,7 @@ from ecgai_data_physionet_grpc.get_by_id_service import GetByIdResponse, Ecg, Ec
 
 def to_get_by_id_response(record: EcgRecord, transaction_id: str) -> GetByIdResponse:
     ecg = Ecg()
+    ecg.record_id= record.record_id
     ecg.record_name = record.record_name
     ecg.sample_rate = record.sample_rate
     for lead in record.leads:
