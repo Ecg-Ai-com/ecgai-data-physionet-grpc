@@ -43,13 +43,13 @@ class EcgDrawingServer(GetByIdServiceBase):
             raise GRPCError(status=Status.INVALID_ARGUMENT, message=str(e))
 
 
-async def main():
+async def main(): # pragma: no cover
     s = EcgDrawingServer()
     # asyncio.ensure_future(s.run())
     await s.run()
 
 
-if __name__ == "__main__":
+if __name__ == "__main__": # pragma: no cover
     try:
         asyncio.run(main())
     except KeyboardInterrupt:

@@ -33,7 +33,7 @@ requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.coverage.run]
-omit = [
+omit = ["src/ecgai_data_physionet_grpc/get_by_id_service/*",
     "src/ecgai_drawing/enums/*",
     "other/lib.py"
 ]

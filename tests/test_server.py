@@ -82,3 +82,4 @@ async def test_get_by_id_with_invalid_sample_rate_request():
     request = GetByIdRequest(transaction_id=transaction_id, record_id=record_id, sample_rate=499);
     with pytest.raises(GRPCError):
         _ = await server.get_by_id(request)
+
