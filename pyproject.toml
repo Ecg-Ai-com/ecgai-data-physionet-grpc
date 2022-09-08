@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "ecgai-data-physionet-grpc"
-version = "0.1.0"
+version = "0.1.1"
 description = "gg"
 authors = ["RobC <rob.clapham@gmail.com>"]
 

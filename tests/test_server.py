@@ -4,9 +4,6 @@ import uuid
 
 import pytest
 from grpclib import GRPCError
-from grpclib.client import Channel
-from grpclib.health.v1.health_grpc import HealthStub
-from grpclib.health.v1.health_pb2 import HealthCheckRequest
 
 from ecgai_data_physionet_grpc.get_by_id_service import GetByIdRequest, GetByIdResponse, GetByIdServiceStub
 from ecgai_data_physionet_grpc.server import EcgDrawingServer
