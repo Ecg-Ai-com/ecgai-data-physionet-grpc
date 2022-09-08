@@ -1,6 +1,6 @@
 syntax = "proto3";
 package get_by_id_service;
-option csharp_namespace = "Ecgai.Data.Api.Features.Physionet";
+option csharp_namespace = "EcgAi.Data.Api.Features.Physionet.Grpc";
 
 message GetByIdRequest{
   string transaction_id = 1;
@@ -11,17 +11,6 @@ message GetByIdRequest{
 message GetByIdResponse{
   string transaction_id = 1;
   Ecg ecg = 2;
-  //    record_name: str  # = Field(..., alias='recordId')
-  //    age: Optional[int] = None
-  //    sex: Optional[str] = None
-  //    report: Optional[str] = None
-  //    diagnostic_codes: list[DiagnosticCode] = []
-  //    # record_name: str
-  //    # units:str
-  //    database_name: str  # = Field(..., alias='databaseName')
-  //    sample_rate: int  # = Field(..., alias='sampleRate')
-  //    leads: List[EcgLeadRecord]  # = Field(..., alias='leads')
-
 }
 
 message DiagnosticCode{
@@ -34,7 +23,7 @@ message Ecg{
   string record_name = 1;
   int32 sample_rate = 2;
   repeated EcgLead leads = 3;
-  string record_id = 4;
+  int32 record_id = 4;
   int32 age = 5;
   string sex = 6;
   string database_name = 7;

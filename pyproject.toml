@@ -10,9 +10,10 @@ authors = ["RobC <rob.clapham@gmail.com>"]
 python = "^3.10,<3.12"
 numpy = "^1.23.2"
 aenum = "^3.1.11"
-ecgai-data-physionet = {git = "https://github.com/Ecg-Ai-com/ecgai-data-physionet.git", rev = "main"}
-betterproto = {extras = ["compiler"], version = "^2.0.0b5"}
-grpclib = {extras = ["protobuf"], version = "^0.4.3"}
+ecgai-data-physionet = { git = "https://github.com/Ecg-Ai-com/ecgai-data-physionet.git", rev = "main" }
+grpclib = { extras = ["protobuf"], version = "^0.4.3" }
+betterproto = { extras = ["compiler"], version = "^2.0.0b5" }
+colorlog = "^6.7.0"
 
 
 [tool.poetry.dev-dependencies]
@@ -21,8 +22,7 @@ pre-commit = "^2.20.0"
 pylint = "^2.14.5"
 coverage = "^6.4.4"
 tox = "^3.25.1"
-bandit = {extras = ["toml"], version = "^1.7.4"}
-fluentcheck = "^0.2.0"
+bandit = { extras = ["toml"], version = "^1.7.4" }
 black = "^22.6.0"
 grpcio-tools = "^1.48.0"
 pytest-asyncio = "^0.19.0"
@@ -32,17 +32,19 @@ pytest-asyncio = "^0.19.0"
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
 
-[tool.coverage.run]
-omit = ["src/ecgai_data_physionet_grpc/get_by_id_service/*",
-    "src/ecgai_drawing/enums/*",
-    "other/lib.py"
-]
+#[tool.coverage.run]
+#omit = ["src/ecgai_data_physionet_grpc/get_by_id_service/*",
+#    "src/ecgai_drawing/enums/*",
+#    "other/lib.py"
+#]
 
 [tool.isort]
 profile = "black"
 
 [tool.black]
 line-length = 120
+
+
 [tool.pytest.ini_options]
 filterwarnings = [
     "error",

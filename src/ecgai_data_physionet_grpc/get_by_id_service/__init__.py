@@ -61,7 +61,7 @@ class Ecg(betterproto.Message):
     record_name: str = betterproto.string_field(1)
     sample_rate: int = betterproto.int32_field(2)
     leads: List["EcgLead"] = betterproto.message_field(3)
-    record_id: str = betterproto.string_field(4)
+    record_id: int = betterproto.int32_field(4)
     age: int = betterproto.int32_field(5)
     sex: str = betterproto.string_field(6)
     database_name: str = betterproto.string_field(7)
